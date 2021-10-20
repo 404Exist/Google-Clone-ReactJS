@@ -20,15 +20,15 @@ export const Results = () => {
   }, [searchTerm, location.pathname]);
 
   if (isLoading ) return <Loading  />;
-  if (results?.results?.length === 0) return (
-    <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
-      <div className="w-full">
-        <p className="text-3xl dark:text-blue-300 text-blue-700">There's no results !!</p>
-      </div>
-    </div>
-  );
   switch (location.pathname) {
     case '/search':
+      if (results?.results?.length === 0) return (
+        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          <div className="w-full">
+            <p className="text-3xl dark:text-blue-300 text-blue-700">There's no results !!</p>
+          </div>
+        </div>
+      );
       return (
         <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
           {results?.results?.map(({ link, title }, index) => (
@@ -42,6 +42,13 @@ export const Results = () => {
         </div>
       );
     case '/images':
+      if (results?.image_results?.length === 0) return (
+        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          <div className="w-full">
+            <p className="text-3xl dark:text-blue-300 text-blue-700">There's no results !!</p>
+          </div>
+        </div>
+      );
       return (
         <div className="flex flex-wrap justify-center items-center">
           {results?.image_results?.map(({ image, link: { href, title } }, index) => (
@@ -53,6 +60,13 @@ export const Results = () => {
         </div>
       );
     case '/news':
+      if (results?.entries?.length === 0) return (
+        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          <div className="w-full">
+            <p className="text-3xl dark:text-blue-300 text-blue-700">There's no results !!</p>
+          </div>
+        </div>
+      );
       return (
         <div className="sm:px-56 flex flex-wrap justify-between items-center space-y-6">
           {results?.entries?.map(({ id, links, source, title }) => (
@@ -68,6 +82,13 @@ export const Results = () => {
         </div>
       );
     case '/videos':
+      if (results?.results?.length === 0) return (
+        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          <div className="w-full">
+            <p className="text-3xl dark:text-blue-300 text-blue-700">There's no results !!</p>
+          </div>
+        </div>
+      );
       return (
         <div className="flex flex-wrap ">
           {results?.results?.map((video, index) => (
